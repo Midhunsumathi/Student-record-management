@@ -192,3 +192,91 @@ Backup mechanisms for data safety
 One student can have multiple academic records
 Users interact with student data based on roles
 Database acts as a central storage system
+
+
+
+DATABASE SCHEMA SQL CREATION :
+ Project Overview
+The Student Record Management System is a database-driven application designed to efficiently store, manage, and retrieve student information. It handles student details, course data, enrollments, and academic performance using a structured relational database.
+This project ensures data integrity, scalability, and efficient querying, making it ideal for educational institutions.
+
+ Features
+ Manage student records
+ Store course details
+ Track enrollments
+ Maintain marks & grades
+ Relational database design
+ Data consistency using constraints
+
+ Database Schema
+ Tables Included
+Table Name	Description
+Students	Stores student details
+Courses	Stores course information
+Enrollments	Links students & courses
+Marks	Stores marks & grades
+
+ SQL Schema
+CREATE DATABASE student_record_db;
+USE student_record_db;
+
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    date_of_birth DATE,
+    gender VARCHAR(10),
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15)
+);
+
+CREATE TABLE Courses (
+    course_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_name VARCHAR(100),
+    course_code VARCHAR(20) UNIQUE,
+    credits INT
+);
+
+CREATE TABLE Enrollments (
+    enrollment_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT,
+    course_id INT,
+    enrollment_date DATE,
+    FOREIGN KEY (student_id) REFERENCES Students(student_id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Marks (
+    mark_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT,
+    course_id INT,
+    marks_obtained INT,
+    grade VARCHAR(5),
+    FOREIGN KEY (student_id) REFERENCES Students(student_id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id) ON DELETE CASCADE
+);
+ Entity Relationships👨‍🎓 One student → Multiple enrollments
+ One course → Multiple students
+ Marks stored per student per course
+ Tech Stack
+ Database: MySQL
+ Concept: Relational Database Design
+ Tools: MySQL Workbench / VS Code
+ Installation & Setup
+ Clone the repository
+git clone https://github.com/your-username/student-record-system.git
+
+ Open SQL file in MySQL
+ Run the script to create database & tables
+ Future Enhancements
+
+ Add frontend UI
+ Implement authentication
+ Build REST API integration
+ Add attendance tracking
+
+ Contributing
+Contributions are welcome!
+Feel free to fork this repo and submit a pull request.
+
+
