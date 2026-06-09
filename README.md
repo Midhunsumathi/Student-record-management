@@ -264,7 +264,6 @@ CREATE TABLE Marks (
  Tools: MySQL Workbench / VS Code
  Installation & Setup
  Clone the repository
-git clone https://github.com/your-username/student-record-system.git
 
  Open SQL file in MySQL
  Run the script to create database & tables
@@ -275,8 +274,6 @@ git clone https://github.com/your-username/student-record-system.git
  Build REST API integration
  Add attendance tracking
 
- Contributing
-Contributions are welcome!
-Feel free to fork this repo and submit a pull request.
+
 
 
